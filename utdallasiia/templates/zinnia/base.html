@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load zinnia_tags i18n %}
+{% load url from future %}
+
+{% block base_content %}
+<div class="row">
+  <div class="twelve columns">
+    {% block blog_title %}
+    <h3>Blog <small>New and events</small></h3>
+    {% endblock %}
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="nine columns">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  <div class="three columns panel radius">
+    {% block sidebar %}
+      <div id="widget-recents" class="widget">
+        <h5>{% trans "Recent entries" %}</h5>
+        {% get_recent_entries %}
+      </div>
+      <div id="widget-archives" class="widget">
+        <h5>{% trans "Archives" %}</h5>
+        {% get_archives_entries_tree %}
+      </div>
+      <div id="widget-tags" class="widget">
+        <h5>{% trans "Tags" %}</h5>
+        {% get_tag_cloud %}
+      </div>
+    {% endblock sidebar %}
+  </div>
+</div>
+{% endblock base_content %}

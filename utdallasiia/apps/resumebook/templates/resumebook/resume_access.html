@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="six columns centered">
+		<div class="panel radius">
+			<h3>For Employers Only</h3>
+			<hr>
+			<h5 class="subheader">You do not have permission to access the resume book at this time. If you are an employer, you may request access to view the resume book.</h5>
+			<a class="secondary button" href="/">Back to Home</a>
+			<a class="button" href="{% url dashboard_select 'employer' %}">Request access &raquo;</a>
+			<hr>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

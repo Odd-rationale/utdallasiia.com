@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block base_content %}
+<div class="row">
+	<div class="six columns">
+		{% placeholder "home_orbit"  or %}
+		<img src="http://placehold.it/600x442&amp;text=Image" />
+		{% endplaceholder %}
+	</div>
+	<div class="six columns">
+		<div class="panel radius">
+			{% placeholder "home_main" or %}
+			<h1>Site Title</h1>
+			<h3>Site Sub-Title</h3>
+			<hr>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urgent tamen et nihil remittunt. Nam ante Aristippus, et ille melius. Videamus animi partes, quarum est conspectus illustrior; Nihil minus, contraque illa hereditate dives ob eamque rem laetus. Duo Reges: constructio interrete.</p>
+			<h5 class="subheader">Follow us on:</h5>
+			{% endplaceholder %}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns">
+		<hr>
+	</div>
+</div>
+<div class="row">
+	<div class="four columns">
+		<div class="panel radius">
+			{% placeholder "col1" or %}
+			<h5>Header</h5>
+			<h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
+			<a href="#" class="small button">BUTTON TIME!</a>
+			{% endplaceholder %}
+		</div>
+	</div>
+	<div class="four columns">
+		<div class="panel radius">
+			{% placeholder "col2" or %}
+			<h5>Header</h5>
+			<h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
+			<a href="#" class="small button">BUTTON TIME!</a>
+			{% endplaceholder %}
+		</div>
+	</div>
+	<div class="four columns">
+		<div class="panel radius">
+			{% placeholder "col3" or %}
+			<h5>Header</h5>
+			<h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
+			<a href="#" class="small button">BUTTON TIME!</a>
+			{% endplaceholder %}
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

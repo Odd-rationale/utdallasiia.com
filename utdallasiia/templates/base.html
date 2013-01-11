@@ -1,0 +1,88 @@
+{% load cms_tags menu_tags sekizai_tags %}
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>UT Dallas IIA | ISACA | ACFE</title>
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/utdallasiia.css">
+	{% render_block "css" %}
+</head>
+<body>
+	<div id="layout">
+		{#% cms_toolbar %#}
+		<!-- Navigation -->
+		<nav class="top-bar">
+			<ul>
+				<li class="name">
+					<h1><a href="/">UT Dallas <small>IIA | ISACA | ACFE</small></a></h1>
+				</li>
+				<li class="toggle-topbar">
+					<a href="#"></a>
+				</li>
+			</ul>
+
+			<section>
+				<ul class="right">
+					{% if user.is_authenticated %}
+					<li class="has-dropdown">
+						<a href="#">{{ user.first_name }} {{ user.last_name }}</a>
+						<ul class="dropdown">
+							<li>
+								<a href="{% url dashboard_view %}">My Account</a>
+							</li>
+							{% if user.is_staff %}
+							<li>
+								<a href="{% url admin:index %}">Admin</a>
+							</li>
+							{% endif %}
+							<li>
+								<a href="{% url auth_logout %}">Logout</a>
+							</li>
+						</ul>
+					</li>
+					{% else %}
+					<li>
+						<a href="{% url auth_login %}">Login</a>
+					</li>
+					{% endif %}
+				</ul>
+				<ul class="left">
+					{% show_menu %}
+				</ul>
+			</section>
+		</nav>
+		<!-- End Navigation -->
+		{% block base_content %}
+		{% endblock base_content %}
+		<div id="layout_footer"></div>
+	</div>
+
+	<div id="footer">
+		<div class="row">
+			<div class="twelve columns">
+				<p>Powered by <a href="http://www.djangoproject.com">Django</a>.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Included JS Files (Compressed) -->
+	<script src="{{ STATIC_URL }}javascripts/foundation/foundation.min.js"></script>
+
+	<!-- Application Javascript, safe to override -->
+	<script src="{{ STATIC_URL }}javascripts/foundation/app.js"></script>
+	{% render_block "js" %}
+</body>
+</html>

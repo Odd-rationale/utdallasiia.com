@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load sekizai_tags %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/responsive-tables.css">
+{% endaddtoblock %}
+
+<div class="row">
+	<div class="twelve columns">
+		<h3>{% if user_view %}My {% endif %}Job Postings</h3>
+		<hr>
+		{% if jobposting_list %}
+		<table class="twelve responsive" id="jobpostings">
+			<thead>
+				<tr>
+					<th data-sort="string"><a href="#">Job Title</a></th>
+					<th data-sort="string"><a href="#">Company</a></th>
+					<th data-sort="string"><a href="#">City</a></th>
+					<th data-sort="string"><a href="#">State</a></th>
+					<th data-sort="string"><a href="#">Type</a></th>
+					<th data-sort="string"><a href="#">Status</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for jobposting in jobposting_list %}
+				<tr>
+					{% if user_view %}
+					<td><a href="{% url update_job_posting jobposting.pk %}">{{ jobposting.job_title }}</a></td>
+					{% else %}
+					<td><a href="{% url job_posting_detail jobposting.pk %}">{{ jobposting.job_title }}</a></td>
+					{% endif %}
+					<td>{{ jobposting.company }}</td>
+					<td>{{ jobposting.city }}</td>
+					<td>{{ jobposting.state }}</td>
+					<td>{{ jobposting.get_type_display }}</td>
+					<td>{{ jobposting.get_status_display }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>
+			There are currently no job postings.
+		</p>
+		{% endif %}
+		{% if user_view %}
+		<a class="secondary button" href="{% url dashboard_view %}">Back to My Account</a>
+		<a class="button" href="{% url create_job_posting %}">Create new job posting &raquo;</a>
+		{% endif %}
+	</div>
+</div>
+
+{% addtoblock "js" %}
+<script src="{{ STATIC_URL }}javascripts/zurb-responsive-tables/responsive-tables.js"></script>
+<script src="{{ STATIC_URL }}javascripts/stupidtable/stupidtable.min.js"></script>
+<script type="text/javascript">
+	var table = $("#jobpostings").stupidtable();
+	table.bind('aftertablesort', function(event, data) {
+		// data.column - the index of the column sorted after a click
+		// data.direction - the sorting direction (either asc or desc)
+
+		var th = $(this).find("th");
+		th.find(".arrow").remove();
+		var arrow = data.direction === "asc" ? "↑" : "↓";
+		th.eq(data.column).append('<span class="arrow">' + arrow + '</span>');
+	}); 
+</script>
+{% endaddtoblock %}
+{% endblock base_content %}

@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="eight columns centered">
+		<div class="panel radius">
+			<h5>Are you a student or an employer?</h5>
+			<div class="row">
+				<div class="six columns">
+					<ul class="pricing-table">
+						<li class="title">
+							Student
+						</li>
+						<li class="description">
+							Select student if you are a current UTD student and would like to join our organization.
+						</li>
+						<li class="cta-button">
+							<a class="button" href="{% url dashboard_select 'student' %}">I'm a student &raquo;</a>
+						</li>
+					</ul>
+				</div>
+				<div class="six columns">
+					<ul class="pricing-table">
+						<li class="title">
+							Employer
+						</li>
+						<li class="description">
+							Select employer if you would like to request access to view our resume book.
+						</li>
+						<li class="cta-button">
+							<a class="button" href="{% url dashboard_select 'employer' %}">I'm an employer &raquo;</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+{% extends "zinnia/base.html" %}
+{% load i18n comments zinnia_tags %}
+{% load url from future %}
+
+{% block content %}
+
+{% block entry-content %}
+  {% include "zinnia/_entry_detail.html" with object_content=object.html_content|safe %}
+{% endblock %}
+
+{% endblock %}

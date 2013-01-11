@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block base_content %}
+{% page_attribute "page_title" as title %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>{{ title }}</h3>
+		<hr>
+	</div>
+</div>
+<div class="row">
+	<div class="nine columns">
+		{% placeholder "content" %}
+	</div>
+
+	<div class="three columns panel radius">
+		{% placeholder "sidebar" %}
+	</div>
+</div>
+{% endblock %}

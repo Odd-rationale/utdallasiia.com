@@ -1,0 +1,51 @@
+[
+	{
+		"pk": 1,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "MBA"
+		}
+	}, {
+		"pk": 2,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "MS ACCT"
+		}
+	}, {
+		"pk": 3,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "MS FIN"
+		}
+	}, {
+		"pk": 4,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "MS ITM"
+		}
+	}, {
+		"pk": 5,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "MS Healthcare"
+		}
+	}, {
+		"pk": 6,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "Undergraduate"
+		}
+	}, {
+		"pk": 7,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "Non-degree seeking"
+		}
+	}, {
+		"pk": 8,
+		"model": "members.degreeplan",
+		"fields": {
+			"degree": "Other"
+		}
+	}
+]

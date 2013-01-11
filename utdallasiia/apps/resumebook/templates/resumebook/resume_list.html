@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load sekizai_tags %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/responsive-tables.css">
+{% endaddtoblock %}
+
+<div class="row">
+	<div class="twelve columns">
+		<h3>Resume Book</h3>
+		<hr>
+		{% if resume_list %}
+		<p>
+			The resume book requires <a href="http://get.adobe.com/reader/" target="_blank">Acrobat Reader</a> to view.
+		</p>
+		<table class="twelve responsive" id="resumebook">
+			<thead>
+				<tr>
+					<th data-sort="string"><a href="#">Last Name</a></th>
+					<th data-sort="string"><a href="#">First Name</a></th>
+					<th data-sort="string"><a href="#">Grad Month</a></th>
+					<th data-sort="int"><a href="#">Grad Year</a></th>
+					<th data-sort="string"><a href="#">Degree Plan(s)</a></th>
+					<th data-sort="string"><a href="#">US Citizen/PR</a></th>
+					<th data-sort="string"><a href="#">Position</a></th>
+					<th data-sort="string"><a href="#">Travel</a></th>
+					<th data-sort="string"><a href="#">Relocate?</a></th>
+					<th data-sort="string"><a href="#">IA Course</a></th>
+					<th data-sort="string"><a href="#">IT Position</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for resume in resume_list %}
+				<tr>
+					<td><a href="{% url download_resume resume.user.pk %}">{{ resume.user.last_name }}</a></td>
+					<td>{{ resume.user.first_name }}</td>
+					<td>{{ resume.user.memberprofile.graduation_month }}</td>
+					<td>{{ resume.user.memberprofile.graduation_year }}</td>
+					<td>{{ resume.user.memberprofile.degree_plans.all|join:", " }}</td>
+					<td>{{ resume.user.memberprofile.get_citizen_resident_display }}</td>
+					<td>{{ resume.get_position_display }}</td>
+					<td>{{ resume.get_travel_display }}</td>
+					<td>{{ resume.get_relocate_display }}</td>
+					<td>{{ resume.get_ia_course_display }}</td>
+					<td>{{ resume.get_it_position_display }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>
+			There are no resume currently in the resume book.
+		</p>
+		{% endif %}
+	</div>
+</div>
+
+{% addtoblock "js" %}
+<script src="{{ STATIC_URL }}javascripts/zurb-responsive-tables/responsive-tables.js"></script>
+<script src="{{ STATIC_URL }}javascripts/stupidtable/stupidtable.min.js"></script>
+<script type="text/javascript">
+	var table = $("#resumebook").stupidtable();
+	table.bind('aftertablesort', function(event, data) {
+		// data.column - the index of the column sorted after a click
+		// data.direction - the sorting direction (either asc or desc)
+
+		var th = $(this).find("th");
+		th.find(".arrow").remove();
+		var arrow = data.direction === "asc" ? "↑" : "↓";
+		th.eq(data.column).append('<span class="arrow">' + arrow + '</span>');
+	}); 
+</script>
+{% endaddtoblock %}
+{% endblock base_content %}

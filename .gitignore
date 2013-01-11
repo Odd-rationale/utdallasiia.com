@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+*.db
+*.sqlite
+.DS_Store
+.coverage
+.sass-cache/
+local_settings.py
+utdallasiia/media/*
+utdallasiia/smedia/*
+utdallasiia/static/*

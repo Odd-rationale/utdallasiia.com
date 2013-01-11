@@ -1,0 +1,23 @@
+{% extends "zinnia/base.html" %}
+{% load i18n zinnia_tags %}
+{% load url from future %}
+
+{% block content %}
+
+{% block content-loop %}
+{% for object in object_list %}
+  {% include "zinnia/_entry_detail.html" with object_content=object.html_content|truncatewords_html:80|safe continue_reading=1 %}
+{% empty %}
+  <p class="info">
+    {% trans "No entries yet." %}
+  </p>
+{% endfor %}
+{% endblock %}
+
+{% block content-pagination %}
+{% if is_paginated %}
+  {% zinnia_pagination page_obj %}
+{% endif %}
+{% endblock %}
+
+{% endblock %}

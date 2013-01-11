@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="four columns">
+		<div class="panel radius">
+			<h5>Profile</h5>
+			<h6> Status: {% if user.memberprofile.is_current %} <span class="success label">Up to date</span> {% else %} <span class="alert label">Not up to date</span> {% endif %} </h6>
+			<p>
+				Update your profile to get started! You can always return here to keep your profile up to date.
+			</p>
+			<a class="button" href="{% url update_profile %}">Update profile &raquo;</a>
+		</div>
+	</div>
+	<div class="four columns">
+		<div class="panel radius">
+			<h5>Membership</h5>
+			<h6> Status: {% if user.memberprofile.is_paid %} <span class="success label">Paid</span> {% else %} <span class="alert label">Not paid</span> {% endif %} </h6>
+			<p>
+				Membership fees are $20.00 per semester. Pay online with PayPal. Please make sure you have an updated profile first.
+			</p>
+			<a class="button {% if not user.memberprofile.is_current or user.memberprofile.is_paid %}disabled{% endif %}" href="{% url paypal_form %}">Submit dues &raquo;</a>
+		</div>
+	</div>
+	<div class="four columns">
+		<div class="panel radius">
+			<h5>Resume Book</h5>
+			<h6> Status: {% if user.resume.student_status == 2 %} <span class="success label">Accepted</span> {% elif user.resume.student_status == 1 %} <span class="label">Pending</span> {% else %} <span class="alert label">No resume</span> {% endif %} </h6>
+			<p>
+				Submit your resume to our online resume book. Please allow some time for us to review your resume.
+			</p>
+			<a class="button {% if not user.memberprofile.is_paid %}disabled{% endif %}" href="{% url submit_resume %}">Submit resume &raquo;</a>
+		</div>
+	</div>
+</div>

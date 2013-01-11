@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="six columns centered">
+		<div class="panel radius">
+			<h3>Delete Job Posting</h3>
+			<hr>
+			<h5 class="subheader">Are you sure you want to delete the job posting for "{{ jobposting.job_title }}"?</h5>
+			<div class="row">
+				<div class="twelve columns">
+					<form action="{% url delete_job_posting jobposting.pk %}" method="post">
+						{% csrf_token %}
+						<a class="secondary button" href="{% url update_job_posting jobposting.pk %}">Cancel</a>
+						<input type="submit" value="Yes, I'm sure" class="button"/>
+					</form>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

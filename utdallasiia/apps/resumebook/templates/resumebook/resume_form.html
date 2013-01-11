@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Submit Resume</h3>
+		<hr>
+		<div class="eight columns end">
+			<form enctype="multipart/form-data" method="post" action="" class="custom">
+				{% csrf_token %}
+				<div class="row">
+					<div class="six columns {% if form.position.errors %}error{% endif %}">
+						{{ form.position.label_tag }}
+						{{ form.position }}
+						{% for errors in form.position.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.position.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.travel.errors %}error{% endif %}">
+						{{ form.travel.label_tag }}
+						{{ form.travel }}
+						{% for errors in form.travel.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.travel.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.relocate.errors %}error{% endif %}">
+						{{ form.relocate.label_tag }}
+						{{ form.relocate }}
+						{% for errors in form.relocate.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.relocate.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.ia_course.errors %}error{% endif %}">
+						{{ form.ia_course.label_tag }}
+						{{ form.ia_course }}
+						{% for errors in form.ia_course.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.ia_course.help_text }}
+						</p>
+					</div>
+				</div>
+				<fieldset>
+					<legend>
+						Professional organization membership:
+					</legend>
+					{% for errors in form.non_field_errors %}
+					<small class="error">{{ errors|escape }}</small>
+					{% endfor %}
+					<p>
+						As outlined in our bylaws, membership is required of at least one of the following professional organizations. Details and student membership pricing can be found on each of the organization's websites.
+					</p>
+					<div class="row">
+						<div class="six columns {% if form.iia_membership.errors %}error{% endif %}">
+							{{ form.iia_membership.label_tag }}
+							{{ form.iia_membership }}
+							{% for errors in form.iia_membership.errors %}
+							<small>{{ errors|escape }}</small>
+							{% endfor %}
+							<p>
+								<a href="https://theiia.org/" target="_blank">https://theiia.org/</a>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="six columns {% if form.isaca_membership.errors %}error{% endif %}">
+							{{ form.isaca_membership.label_tag }}
+							{{ form.isaca_membership }}
+							{% for errors in form.isaca_membership.errors %}
+							<small>{{ errors|escape }}</small>
+							{% endfor %}
+							<p>
+								<a href="https://www.isaca.org/" target="_blank">https://www.isaca.org/</a>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="six columns {% if form.acfe_membership.errors %}error{% endif %}">
+							{{ form.acfe_membership.label_tag }}
+							{{ form.acfe_membership }}
+							{% for errors in form.acfe_membership.errors %}
+							<small>{{ errors|escape }}</small>
+							{% endfor %}
+							<p>
+								<a href="http://www.acfe.com/" target="_blank">http://www.acfe.com/</a>
+							</p>
+						</div>
+					</div>
+				</fieldset>
+				<div class="row">
+					<div class="six columns {% if form.resume.errors %}error{% endif %}" id="resume">
+						{{ form.resume.label_tag }}
+						{{ form.resume }}
+						{% for errors in form.resume.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.resume.help_text }}
+						</p>
+					</div>
+				</div>
+				<hr>
+				<a class="secondary button" href="{% url dashboard_view %}">Cancel</a>
+				<input type="submit" value="Submit" class="button"/>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Membership</h3>
+		<hr>
+		<div class="row">
+			<div class="six columns centered">
+				<ul class="pricing-table">
+					<li class="title">
+						Purchase Membership
+					</li>
+					<li class="price">
+						$20.00
+					</li>
+					<li class="description">
+						The membership fee for our student organization is $20.00 per semester. Benefits of membership include the following:
+					</li>
+					<li class="bullet-item">
+						Access to submit your resume to our resume book.
+					</li>
+					<li class="bullet-item">
+						Free attendance at Dallas IIA and North Texas ISACA monthly meetings.
+					</li>
+					<li class="bullet-item">
+						Discounted CIA and CISA review materials.
+					</li>
+					<li class="cta-button">
+						{{ form.render }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

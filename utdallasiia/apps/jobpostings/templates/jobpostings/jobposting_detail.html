@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Job Postings</h3>
+		<hr>
+		<h5>{{ jobposting.job_title }}</h5>
+		<h6>{{ jobposting.company }} - {{ jobposting.city }}, {{ jobposting.state }}
+		<p>
+			{% if jobposting.status == 0 %}
+			<span class="label">Pending</span>
+			{% elif jobposting.status == 1 %}
+			<span class="success label">Open</span>
+			{% elif jobposting.status == 2 %}
+			<span class="alert label">Closed</span>
+			{% endif %}
+
+			<span class="label">{{ jobposting.get_type_display }}</span>
+		</p>
+		<h6>Job description:</h6>
+		<p>{{ jobposting.job_description|linebreaksbr }}</p>
+		<h6>Desired skills and experience:</h6>
+		<p>{{ jobposting.skill_experience|linebreaksbr }}</p>
+		<h6>Company description:</h6>
+		<p>{{ jobposting.company_description|linebreaksbr }}</p>
+		<hr>
+		<p>
+			<a class="secondary button" href="{% url job_posting_view %}">&laquo; Back</a>
+		</p>
+	</div>
+</div>
+{% endblock base_content %}

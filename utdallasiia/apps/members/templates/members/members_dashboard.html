@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Welcome, {{ user.first_name }}!</h3>
+		<hr>
+		{% if user.memberprofile.is_student %}
+		{% include 'members/includes/student_dashboard.html' %}
+		{% endif %}
+
+		{% if user.memberprofile.is_employer %}
+		{% include 'members/includes/employer_dashboard.html' %}
+		{% endif %}
+
+		{% if not user.memberprofile.is_student and not user.memberprofile.is_employer %}
+		{% include 'members/includes/select_student_or_employer.html' %}
+		{% endif %}
+	</div>
+</div>
+
+{% endblock base_content %}

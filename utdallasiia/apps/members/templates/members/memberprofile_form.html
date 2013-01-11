@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Profile</h3>
+		<hr>
+		<div class="eight columns end">
+			<form method="post" action="" class="custom">
+				{% csrf_token %}
+				<div class="row">
+					<div class="six columns {% if form.netid.errors %}error{% endif %}">
+						{{ form.netid.label_tag }}
+						{{ form.netid }}
+						{% for errors in form.netid.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.netid.help_text }}
+						</p>
+					</div>
+					<div class="six columns {% if form.phone_number.errors %}error{% endif %}">
+						{{ form.phone_number.label_tag }}
+						{{ form.phone_number }}
+						{% for errors in form.phone_number.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.phone_number.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="twelve columns {% if form.street_address.errors %}error{% endif %}">
+						{{ form.street_address.label_tag }}
+						{{ form.street_address }}
+						{% for errors in form.street_address.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.street_address.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="five columns {% if form.city.errors %}error{% endif %}">
+						{{ form.city.label_tag }}
+						{{ form.city }}
+						{% for errors in form.city.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.city.help_text }}
+						</p>
+					</div>
+					<div class="five columns {% if form.state.errors %}error{% endif %}">
+						{{ form.state.label_tag }}
+						{{ form.state }}
+						{% for errors in form.state.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.state.help_text }}
+						</p>
+					</div>
+					<div class="two columns {% if form.zip_code.errors %}error{% endif %}">
+						{{ form.zip_code.label_tag }}
+						{{ form.zip_code }}
+						{% for errors in form.zip_code.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.zip_code.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="four columns end {% if form.tshirt_size.errors %}error{% endif %}">
+						{{ form.tshirt_size.label_tag }}
+						{{ form.tshirt_size }}
+						{% for errors in form.tshirt_size.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.tshirt_size.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.degree_plans.errors %}error{% endif %}">
+						{{ form.degree_plans.label_tag }}
+						{{ form.degree_plans }}
+						{% for errors in form.degree_plans.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.degree_plans.help_text }}
+						</p>
+					</div>
+					<div class="six columns">
+						<div class="row">
+							<div class="twelve columns {% if form.classification.errors %}error{% endif %}">
+								{{ form.classification.label_tag }}
+								{{ form.classification }}
+								{% for errors in form.classification.errors %}
+								<small>{{ errors|escape }}</small>
+								{% endfor %}
+								<p>
+									{{ form.classification.help_text }}
+								</p>
+							</div>
+							<div class="twelve columns {% if form.graduation_month.errors %}error{% endif %}">
+								{{ form.graduation_month.label_tag }}
+								{{ form.graduation_month }}
+								{% for errors in form.graduation_month.errors %}
+								<small>{{ errors|escape }}</small>
+								{% endfor %}
+								<p>
+									{{ form.graduation_month.help_text }}
+								</p>
+							</div>
+							<div class="twelve columns {% if form.graduation_year.errors %}error{% endif %}">
+								{{ form.graduation_year.label_tag }}
+								{{ form.graduation_year }}
+								{% for errors in form.graduation_year.errors %}
+								<small>{{ errors|escape }}</small>
+								{% endfor %}
+								<p>
+									{{ form.graduation_year.help_text }}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns end {% if form.citizen_resident.errors %}error{% endif %}">
+						{{ form.citizen_resident.label_tag }}
+						{{ form.citizen_resident }}
+						{% for errors in form.citizen_resident.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.citizen_resident.help_text }}
+						</p>
+					</div>
+				</div>
+				<hr>
+				<a class="secondary button" href="{% url dashboard_view %}">Cancel</a>
+				<input type="submit" value="Submit" class="button"/>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

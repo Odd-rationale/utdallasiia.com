@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block base_content %}
+<div class="row">
+	<div class="twelve columns">
+		<h3>Edit Job Posting</h3>
+		<hr>
+		<div class="eight columns end">
+			<form method="post" action="" class="custom">
+				{% csrf_token %}
+				<div class="row">
+					<div class="six columns {% if form.job_title.errors %}error{% endif %}">
+						{{ form.job_title.label_tag }}
+						{{ form.job_title }}
+						{% for errors in form.job_title.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.job_title.help_text }}
+						</p>
+					</div>
+					<div class="six columns {% if form.type.errors %}error{% endif %}">
+						{{ form.type.label_tag }}
+						{{ form.type }}
+						{% for errors in form.type.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.type.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.company.errors %}error{% endif %}">
+						{{ form.company.label_tag }}
+						{{ form.company }}
+						{% for errors in form.company.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.company.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns {% if form.city.errors %}error{% endif %}">
+						{{ form.city.label_tag }}
+						{{ form.city }}
+						{% for errors in form.city.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.city.help_text }}
+						</p>
+					</div>
+					<div class="six columns {% if form.state.errors %}error{% endif %}">
+						{{ form.state.label_tag }}
+						{{ form.state }}
+						{% for errors in form.state.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+						<p>
+							{{ form.state.help_text }}
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="twelve columns {% if form.job_description.errors %}error{% endif %}">
+						{{ form.job_description.label_tag }}
+						<p>
+							{{ form.job_description.help_text }}
+						</p>
+						{{ form.job_description }}
+						{% for errors in form.job_description.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+					</div>
+					<div class="twelve columns {% if form.skill_experience.errors %}error{% endif %}">
+						{{ form.skill_experience.label_tag }}
+						<p>
+							{{ form.skill_experience.help_text }}
+						</p>
+						{{ form.skill_experience }}
+						{% for errors in form.skill_experience.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+					</div>
+					<div class="twelve columns {% if form.company_description.errors %}error{% endif %}">
+						{{ form.company_description.label_tag }}
+						<p>
+							{{ form.company_description.help_text }}
+						</p>
+						{{ form.company_description }}
+						{% for errors in form.company_description.errors %}
+						<small>{{ errors|escape }}</small>
+						{% endfor %}
+					</div>
+				</div>
+				<hr>
+				<a class="secondary button" href="{% url job_posting_user_view %}">Cancel</a>
+				<input type="submit" value="Submit" class="button"/>
+				{% if update_view %}
+				<div class="right">
+					<a class="button" href="{% url close_job_posting jobposting.pk %}">Close Job</a>
+					<a class="alert button" href="{% url delete_job_posting jobposting.pk %}">Delete</a>
+				</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock base_content %}

@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="four columns">
+		<div class="panel radius">
+			<h5>Resume Book Access</h5>
+			<h6> Status: {% if user.resume.access_status == 2 %} <span class="success label">Access granted</span> {% elif user.resume.access_status == 1 %} <span class="label">Access pending</span> {% else %} <span class="alert label">No access</span> {% endif %} </h6>
+			<p>
+				Access our database of student resumes.
+			</p>
+			<a class="button" href="{% url resume_book_view %}">View resume book &raquo;</a>
+		</div>
+	</div>
+	<div class="four columns end">
+		<div class="panel radius">
+			<h5>Job Postings</h5>
+			<p>
+				View and manage your job postings.
+			</p>
+			<a class="button" href="{% url job_posting_user_view %}">Manage job postings &raquo;</a>
+		</div>
+	</div>
+</div>
