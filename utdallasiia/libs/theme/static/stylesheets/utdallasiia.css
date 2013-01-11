@@ -48,7 +48,12 @@ ul.side-nav {
 	line-height: 1;
 }
 
-#orbitHome { background: url(../images/spinner.gif) center center #f4f4f4; height: 300px; }
+#orbitHome {
+	background: url(../images/spinner.gif) center center #f4f4f4;
+	background-repeat:no-repeat;
+	height: 300px;
+}
+
 #orbitHome img { display: none; }
 
 #orbitHome.orbit { background: none; }
