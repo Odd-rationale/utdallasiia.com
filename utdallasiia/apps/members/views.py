@@ -75,10 +75,9 @@ class PayPalView(TemplateView):
             "amount": "0.01",
             "item_name": "UT Dallas IIA Membership",
             "invoice": "iia-membership",
-#            "notify_url": "http://%s%s" % (self.request.get_host(), reverse_lazy('paypal-ipn')),
-            "notify_url": "http://%s%s" % ('oddrationale.pagekite.me', reverse_lazy('paypal-ipn')),
-            "return_url": "http://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
-            "cancel_return": "http://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
+            "notify_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('paypal-ipn')),
+            "return_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
+            "cancel_return": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
             "custom": self.request.user.pk,
         }
         form = PayPalPaymentsForm(initial=paypal_dict)
