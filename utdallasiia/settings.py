@@ -157,6 +157,8 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
 )
 
+SMARTSNIPPETS_CACHING_TIME = 0
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

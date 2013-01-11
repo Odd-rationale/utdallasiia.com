@@ -15,4 +15,3 @@ def deploy():
         with prefix(env.activate):
             run("git pull")
             run("python manage.py collectstatic")
-            run(". ../apache2/bin/restart")
