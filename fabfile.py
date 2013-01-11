@@ -15,3 +15,4 @@ def deploy():
         with prefix(env.activate):
             run("git pull")
             run("python manage.py collectstatic")
+            run("~/bin/utdallasiia_site_admin restart")
