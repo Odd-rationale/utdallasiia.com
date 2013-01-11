@@ -43,3 +43,7 @@ table#resumebook th, table#resumebook td {
 ul.side-nav {
 	padding: 0px 0px 17px 0px;
 }
+
+.entry-body ul {
+	line-height: 1;
+}
