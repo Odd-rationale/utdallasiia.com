@@ -72,7 +72,7 @@ class PayPalView(TemplateView):
     def get_context_data(self, **kwargs):
         paypal_dict = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
-            "amount": "0.01",
+            "amount": "20.00",
             "item_name": "UT Dallas IIA Membership",
             "invoice": "iia-membership",
             "notify_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('paypal-ipn')),
