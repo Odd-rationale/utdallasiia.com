@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib.console import confirm
 
 env.hosts = ['utdallasiia@utdallasiia.webfactional.com']
-env.directory = '/home/utdallasiia/webapps/utdallasiia_site'
+env.directory = '/home/utdallasiia/webapps/utdallasiia_site/utdallasiia'
 env.activate = 'source /home/utdallasiia/env/utdallasiia/bin/activate'
 
 def prepare_deploy():
