@@ -74,7 +74,7 @@ class PayPalView(TemplateView):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "20.00",
             "item_name": "UT Dallas IIA Membership",
-            "invoice": "iia-membership",
+            "invoice": "iia-membership-%s" % self.request.user.pk,
             "notify_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('paypal-ipn')),
             "return_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
             "cancel_return": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),

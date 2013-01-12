@@ -33,7 +33,7 @@
 			<tbody>
 				{% for resume in resume_list %}
 				<tr>
-					<td><a href="{% url download_resume resume.user.pk %}">{{ resume.user.last_name }}</a></td>
+					<td><a href="{% url download_resume resume.pk %}">{{ resume.user.last_name }}</a></td>
 					<td>{{ resume.user.first_name }}</td>
 					<td>{{ resume.user.memberprofile.graduation_month }}</td>
 					<td>{{ resume.user.memberprofile.graduation_year }}</td>
