@@ -1,3 +1,4 @@
+from uuid import uuid4
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -74,7 +75,7 @@ class PayPalView(TemplateView):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "20.00",
             "item_name": "UT Dallas IIA Membership",
-            "invoice": "iia-membership-%s" % self.request.user.pk,
+            "invoice": "invoice-%s" % uuid4(),
             "notify_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('paypal-ipn')),
             "return_url": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
             "cancel_return": "https://%s%s" % (self.request.get_host(), reverse_lazy('dashboard_view')),
