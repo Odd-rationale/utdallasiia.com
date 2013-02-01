@@ -16,7 +16,7 @@ class ResumeForm(forms.ModelForm):
         
     def clean(self):
         cleaned_data = super(ResumeForm, self).clean()
-        if cleaned_data['iia_membership'] == cleaned_data['iia_membership'] == cleaned_data['iia_membership'] == '':
+        if cleaned_data['iia_membership'] == cleaned_data['isaca_membership'] == cleaned_data['acfe_membership'] == '':
             raise forms.ValidationError('You must belong to at least one of the three professional organizations.')
         else:
             return cleaned_data
