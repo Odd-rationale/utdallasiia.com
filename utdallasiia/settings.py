@@ -139,6 +139,7 @@ LOGIN_ERROR_URL = '/'
 
 SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+SOCIAL_AUTH_USERNAME_FIXER = lambda username: username.replace(',', '_')
 
 LINKEDIN_SCOPE = ['r_emailaddress']
 LINKEDIN_EXTRA_FIELD_SELECTORS = ['email-address']
