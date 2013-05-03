@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import re
 gettext = lambda s: s
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -139,7 +140,7 @@ LOGIN_ERROR_URL = '/'
 
 SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
-SOCIAL_AUTH_USERNAME_FIXER = lambda username: username.replace(',', '_')
+SOCIAL_AUTH_USERNAME_FIXER = lambda username: re.sub('[\W]+', '_', username)
 
 LINKEDIN_SCOPE = ['r_emailaddress']
 LINKEDIN_EXTRA_FIELD_SELECTORS = ['email-address']
