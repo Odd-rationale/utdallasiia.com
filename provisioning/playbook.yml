@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: install packages
+      apt: pkg=git state=present

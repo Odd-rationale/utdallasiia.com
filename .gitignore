@@ -25,7 +25,7 @@ build
 *.coverage
 *.sublime-workspace
 
-
+# Site specific:
 utdallasiia_site/media/*
 utdallasiia_site/smedia/*
 utdallasiia_site/assets/*
