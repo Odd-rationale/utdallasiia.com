@@ -1,0 +1,43 @@
+---
+- hosts: vagrant
+  vars:
+    project_name: utdallasiia_site
+    postgresql_version: 9.1
+  sudo: yes
+  tasks:
+    - name: install packages
+      apt: pkg={{ item }} state=present
+      with_items:
+        # Install PostgreSQL
+        - postgresql
+        - python-dev
+        - libpq-dev
+        - python-psycopg2
+        # Install PIL build dependencies
+        - libjpeg62-dev
+        - zlib1g-dev
+        - libfreetype6-dev
+        - liblcms1-dev
+        # Install other niceties
+        - git
+        - vim
+        - virtualenvwrapper
+    - name: setup database
+      sudo_user: postgres
+      postgresql_db: >
+        name={{ project_name }}
+        state=present
+        encoding='UTF-8'
+        lc_collate='en_US.UTF-8'
+        lc_ctype='en_US.UTF-8'
+        template='template0'
+    - name: create postgres configuration file
+      action: > 
+        template 
+        src=templates/pg_hba.conf.j2
+        dest="/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf"
+      notify:
+      - restart postgres
+  handlers:
+    - name: restart postgres
+      service: name=postgresql state=restarted

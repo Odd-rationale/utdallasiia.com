@@ -19,6 +19,7 @@ build
 
 # Vagrant:
 .vagrant
+vagrant_ansible_inventory*
 
 # Others:
 *.DS_Store
