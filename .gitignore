@@ -19,12 +19,13 @@ build
 
 # Vagrant:
 .vagrant
-vagrant_ansible_inventory*
 
 # Others:
 *.DS_Store
 *.coverage
-*.sublime-workspace
+
+# PyCharm files:
+.idea/workspace.xml
 
 # Site specific:
 utdallasiia_site/media/*
